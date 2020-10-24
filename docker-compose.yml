@@ -1,7 +1,7 @@
 version: "3"
 services:
   adguard:
-    image: tob123/adguardhome-staging:${VERSION}
+    image: tob123/adguard-staging:${VERSION}
     build: ./
     volumes:
       - adguard_work:/opt/adguardhome/work

@@ -13,7 +13,7 @@ install:
   - echo "$DOCKER_HUB_P" | docker login -u "$DOCKER_HUB_U" --password-stdin
   - docker container ls
   - bash dockpush.sh
-  - docker logs adguard_1
+  - docker-compose logs
 script:
   - anchore-cli image add docker.io/tob123/adguard-staging:${VERSION}
   - anchore-cli image wait docker.io/tob123/adguard-staging:${VERSION}
