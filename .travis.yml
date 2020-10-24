@@ -15,11 +15,13 @@ install:
   - bash dockpush.sh
   - docker-compose logs
 script:
+  - pip3 install --user anchorecli
+  - export PATH="$HOME/.local/bin/:$PATH"
   - anchore-cli image add docker.io/tob123/adguard-staging:${VERSION}
   - anchore-cli image wait docker.io/tob123/adguard-staging:${VERSION}
   - anchore-cli evaluate check docker.io/tob123/adguard-staging:${VERSION}
 deploy:
   provider: script
-  script: bash doccompare.sh
+  script: bash dockcompare.sh
 
 
