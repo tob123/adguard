@@ -1,0 +1,25 @@
+addons:
+  apt:
+    packages:
+      - python3-pip
+      - python3-setuptools
+services:
+  - docker
+env:
+  matrix:
+  - VERSION=v0.103.3 LATEST_MINOR=true LATEST=true
+install:
+  - docker-compose up -d --build
+  - echo "$DOCKER_HUB_P" | docker login -u "$DOCKER_HUB_U" --password-stdin
+  - docker container ls
+  - bash dockpush.sh
+  - docker logs adguard_1
+script:
+  - anchore-cli image add docker.io/tob123/adguard-staging:${VERSION}
+  - anchore-cli image wait docker.io/tob123/adguard-staging:${VERSION}
+  - anchore-cli evaluate check docker.io/tob123/adguard-staging:${VERSION}
+deploy:
+  provider: script
+  script: bash doccompare.sh
+
+

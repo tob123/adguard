@@ -1,0 +1,12 @@
+version: "3"
+services:
+  adguard:
+    image: tob123/adguardhome-staging:${VERSION}
+    build: ./
+    volumes:
+      - adguard_work:/opt/adguardhome/work
+      - adguard_conf:/opt/adguardhome/conf
+    restart: unless-stopped
+volumes:
+  adguard_work:
+  adguard_conf:
