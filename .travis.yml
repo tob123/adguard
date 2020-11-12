@@ -7,7 +7,7 @@ services:
   - docker
 env:
   matrix:
-  - VERSION=v0.103.3 LATEST_MINOR=true LATEST=true
+  - VERSION=v0.104.1 LATEST_MINOR=true LATEST=true
 install:
   - docker-compose up -d --build
   - echo "$DOCKER_HUB_P" | docker login -u "$DOCKER_HUB_U" --password-stdin
