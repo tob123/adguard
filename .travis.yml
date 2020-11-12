@@ -9,7 +9,8 @@ env:
   matrix:
   - VERSION=v0.104.1 LATEST_MINOR=true LATEST=true
 install:
-  - docker-compose up -d --build --build-arg VER=${VERSION}
+  - docker-compose build --build-arg VER=${VERSION}
+  - docker-compose up -d
   - echo "$DOCKER_HUB_P" | docker login -u "$DOCKER_HUB_U" --password-stdin
   - docker container ls
   - bash dockpush.sh
