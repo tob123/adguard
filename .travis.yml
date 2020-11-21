@@ -7,7 +7,7 @@ services:
   - docker
 env:
   matrix:
-  - VERSION=v0.104.1 LATEST_MINOR=true LATEST=true
+  - VERSION=v0.104.3 LATEST_MINOR=true LATEST=true
 install:
   - docker-compose build --build-arg VER=${VERSION}
   - docker-compose up -d
